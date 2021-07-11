@@ -5,9 +5,9 @@ This repository supports generating 120+ basin attributes given a basin boundary
 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
 
 
-## Steps to generate the desired basin attributes:
-Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
-Run the code.
+Steps to generate the desired basin attributes:
+1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
+2. Run the code.
 
 Following is the summary of each script that is used to calculate specific basin attributes; for an introduction to each feature, see attributes_description.xlsx:
 1. basin_shape_factor.py: length, form factor, shape factor, compactness coefficient, circulatory ratio, elongation ratio	 
