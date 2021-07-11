@@ -25,7 +25,7 @@ Steps to generate the desired basin attributes:
 
 When all the data is ready, the ./data folder will look like this:
 ```bash
-├── dems
+├── dems # 
 |   ├── ASTGTMV003_N34E111_dem.tif
 |   ├── ASTGTMV003_N32E110_dem.tif
 |   ├── ...
@@ -41,11 +41,11 @@ When all the data is ready, the ./data folder will look like this:
 |   ├── as_streams_wgs.shp
 |   ├── ...
 ├── soil_source_data
-|   ├── binary
+|   ├── binary # http://globalchange.bnu.edu.cn/research/soil5.jsp
 |   |   ├── log_k_s_l1
 |   |   ├── log_k_s_l2
 |   |   ├── ...
-|   ├── netcdf
+|   ├── netcdf # http://globalchange.bnu.edu.cn/research/soil2
 |   |   ├── CL.nc
 |   |   ├── GRAV.nc
 |   |   ├── PDEP.nc
@@ -54,7 +54,7 @@ When all the data is ready, the ./data folder will look like this:
 |   |   ├── SOM.nc
 |   |   ├── POR.nc
 |   |   ├── ...
-|   ├── tif
+|   ├── tif # https://files.isric.org/soilgrids/former/2017-03-10/data/
 |   |   ├── *.tif
 ├── SURF_CLI_CHN_MUL_DAY
 |   ├── Data
@@ -69,8 +69,7 @@ When all the data is ready, the ./data folder will look like this:
 ├── processed_glim.py
 ├── processed_igbp.tif
 ├── processed_permeability.tif
-├── processed_permeability.tif
-├── processed_porrosity.tif
+├── processed_porosity.tif
 ├── root_depth_calculated.txt
 ```
 
