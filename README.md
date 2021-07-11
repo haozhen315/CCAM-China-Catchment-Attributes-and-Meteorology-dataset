@@ -11,7 +11,7 @@ The manuscript can be found [here](https://essd.copernicus.org/preprints/essd-20
 This repository supports generating 120+ basin attributes for each basin given a single or several basin boundaries. 
 
 ## Contact Information
-If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
+If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 ## Introduction
 There are two ways to use this project:
