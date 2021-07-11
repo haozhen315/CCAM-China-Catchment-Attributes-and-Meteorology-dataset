@@ -1,0 +1,17 @@
+short,long
+su,Unconsolidated sediments
+ss,Siliciclastic sedimentary rocks
+py,Pyroclastics
+sm,Mixed sedimentary rocks
+sc,Carbonate sedimentary rocks
+ev,Evaporites
+va,Acid volcanic rocks
+vi,Intermediate volcanic rocks
+vb,Basic volcanic rocks
+pa,Acid plutonic rocks
+pi,Intermediate plutonic rocks
+pb,Basic plutonic rocks
+mt,Metamorphics
+wb,Water Bodies
+ig,Ice and Glaciers
+nd,No Data
