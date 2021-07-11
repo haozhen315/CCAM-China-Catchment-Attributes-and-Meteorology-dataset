@@ -7,6 +7,58 @@ This repository supports generating 120+ basin attributes given a basin boundary
 
 Steps to generate the desired basin attributes:
 1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
+
+When all the data is ready, the ./data folder will look like this:
+''' bash
+├── dems
+|   ├── ASTGTMV003_N34E111_dem.tif
+|   ├── ASTGTMV003_N32E110_dem.tif
+|   ├── ...
+├── MCD15A3H
+|   ├── MCD15A3H.A2002185.h22v04.006.2015149102803.hdf
+|   ├── MCD15A3H.A2002188.h22v04.006.2015149102803.hdf
+|   ├── ...
+├── MOD13Q1
+|   ├── MOD13Q1.A2002185.h22v04.006.2015149102803.hdf
+|   ├── MOD13Q1.A2002188.h22v04.006.2015149102803.hdf
+|   ├── ...
+├── river_network
+|   ├── as_streams_wgs.shp
+|   ├── ...
+├── soil_source_data
+|   ├── binary
+|   |   ├── log_k_s_l1
+|   |   ├── log_k_s_l2
+|   |   ├── ...
+|   ├── netcdf
+|   |   ├── CL.nc
+|   |   ├── GRAV.nc
+|   |   ├── PDEP.nc
+|   |   ├── SA.nc
+|   |   ├── SI.nc
+|   |   ├── SOM.nc
+|   |   ├── POR.nc
+|   |   ├── ...
+|   ├── tif
+|   |   ├── *.tif
+├── SURF_CLI_CHN_MUL_DAY
+|   ├── Data
+|   |   ├── EVP
+|   |   |   ├── SURF_CLI_CHN_MUL_DAY-EVP-13240-195101.TXT
+|   |   ├── GST
+|   |   |   ├── ...
+|   |   ├── WIN
+|   |   |   ├── ...
+├── glim_cate_number_mapping.csv
+├── glim_name_short_long.txt
+├── processed_glim.py
+├── processed_igbp.tif
+├── processed_permeability.tif
+├── processed_permeability.tif
+├── processed_porrosity.tif
+├── root_depth_calculated.txt
+'''
+
 2. Run the code.
 
 Following is the summary of each script that is used to calculate specific basin attributes; for an introduction to each feature, see attributes_description.xlsx:
