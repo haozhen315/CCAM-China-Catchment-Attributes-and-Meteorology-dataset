@@ -5,7 +5,9 @@ from utils import *
 
 
 '''
-The directory should be structured as follows:
+Reference: Gleeson, Tom, 2018, "GLobal HYdrogeology MaPS (GLHYMPS) of permeability and porosity", 
+https://doi.org/10.5683/SP2/DLGXYO, Scholars Portal Dataverse, V1
+
 ├── glhymps.py
 ├── shapefiles
 |   ├── basin_0000.shp
