@@ -8,10 +8,11 @@ import rasterio
 import rasterio.mask
 
 '''
+Reference: 
+Hartmann, J., Moosdorf, N., 2012. The new global lithological map database GLiM: A representation of rock 
+properties at the Earth surface. Geochemistry, Geophysics, Geosystems, 13. DOI: 10.1029/2012GC004370
 
 Catchment-scale zonal stats of lithology based on the GliM data set.
-Reference: Hartmann, J., Moosdorf, N., 2012. The new global lithological map database GLiM: A representation of rock 
-properties at the Earth surface. Geochemistry, Geophysics, Geosystems, 13. DOI: 10.1029/2012GC004370
 
 Requirement: 
 (1) processed_glim.tif: Converted GliM Raster. There are two ways to obtain this file, first is to download our preprocessed 
@@ -28,7 +29,6 @@ Alternatively, you can download the original GLiM dataset and convert it to rast
 (2) glim_cate_number_mapping.csv: mapping number to lithology category
 (3) glim_name_short_long.txt: mapping short name to long name of lithology categories
 
-The directory should be structured as follows:
 ├── glim.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -37,8 +37,6 @@ The directory should be structured as follows:
 |   ├── processed_glim.tif
 |   ├── glim_cate_number_mapping.csv
 |   ├── glim_name_short_long.txt
-
-
 '''
 
 
