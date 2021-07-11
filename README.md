@@ -9,7 +9,7 @@ Steps to generate the desired basin attributes:
 1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
 
 When all the data is ready, the ./data folder will look like this:
-''' bash
+```bash
 ├── dems
 |   ├── ASTGTMV003_N34E111_dem.tif
 |   ├── ASTGTMV003_N32E110_dem.tif
@@ -57,7 +57,7 @@ When all the data is ready, the ./data folder will look like this:
 ├── processed_permeability.tif
 ├── processed_porrosity.tif
 ├── root_depth_calculated.txt
-'''
+```
 
 2. Run the code.
 
