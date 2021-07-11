@@ -7,7 +7,12 @@ import datetime
 import os
 
 '''
-calculate catchment-scale climate indicator
+Calculate catchment-scale climate indicator. After the watershed meteorological time series has been successfully generated. 
+
+├── climate_indicator.py
+├── output
+|   ├── catchment_meteorological
+|   |   ├── 0001.xlsx # 0001 is the basin id, corresponding to the shapefile basin_0001.shp
 '''
 
 
