@@ -10,6 +10,16 @@ from shapely.ops import transform
 
 '''
 
+The directory should be structured as follows:
+├── basin_shape_factor.py
+├── shapefiles
+|   ├── basin_0000.shp
+|   ├── basin_0001.shp
+├── data
+|   ├── river_network
+|   |   ├── as_streams_wgs.shp
+├── output
+
 Drainage basin boundary data and the river network data are obtained from the Global Drainage Basin Database (GDBD) 
 dataset: https://www.cger.nies.go.jp/db/gdbd/gdbd_index_e.html. Here, determining the basin outlet needs river network 
 and basin boundaries as input. Since the river network provided by GDBD did not cover all basins (mainly watersheds 
