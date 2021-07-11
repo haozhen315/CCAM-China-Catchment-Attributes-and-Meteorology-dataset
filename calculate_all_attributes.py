@@ -2,6 +2,12 @@ import os
 import pandas as pd
 import subprocess
 
+'''
+To run this code, you need to prepare and put all the data required by other codes in the right place. 
+When you have prepared the source data, you can run this code to calculate the properties for all given 
+basin boundaries.
+'''
+
 
 def merge_dfs(dfs):
     from functools import reduce
