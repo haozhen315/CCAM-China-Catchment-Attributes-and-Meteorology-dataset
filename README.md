@@ -25,7 +25,7 @@ Steps to generate the desired basin attributes:
 
 When all the data is ready, the ./data folder will look like this:
 ```bash
-├── dems # 
+├── dems
 |   ├── ASTGTMV003_N34E111_dem.tif
 |   ├── ASTGTMV003_N32E110_dem.tif
 |   ├── ...
