@@ -14,7 +14,7 @@ import datetime
 
 '''
 
-Interpolate site weather data to raster time series
+Interpolate site weather data to raster time series.
 
 Requirement: 
 SURF_CLI_CHN_MUL_DAY Data: https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY.html
@@ -28,6 +28,9 @@ The directory containing the SURF_CLI_CHN_MUL_DAY dataset should be structured a
 |   ├── WIN
 |   |   ├── ...
 
+Steps:
+1. Download the situ observations meteorological data (access permission needed): https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html
+2. Run this code. The interpolation range and resolution can be modified in L418-L422. Interpolation can take hours to run.
 '''
 
 
