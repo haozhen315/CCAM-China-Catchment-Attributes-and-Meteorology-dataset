@@ -5,7 +5,8 @@ import subprocess
 '''
 To run this code, you need to prepare and put all the data required by other codes in the right place. 
 When you have prepared the source data, you can run this code to calculate the properties for all given 
-basin boundaries.
+basin boundaries. The output file ./all_attributes.xlsx will be generated containing all the calculated 
+attributes for all given basins.
 '''
 
 
