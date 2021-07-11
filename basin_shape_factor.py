@@ -9,7 +9,11 @@ from utils import *
 from shapely.ops import transform
 
 '''
-The directory should be structured as follows:
+Reference: 
+Subramanya, K. (2013). Engineering Hydrology, 4e, Tata McGraw-Hill Education.
+Masutomi, Y., Y. Inui, K. Takahashi and Y. Matsuoka (2009). "Development of highly accurate global polygonal drainage basin data." 
+Hydrological Processes: An International Journal 23(4): 572-584.
+
 ├── basin_shape_factor.py
 ├── shapefiles
 |   ├── basin_0000.shp
