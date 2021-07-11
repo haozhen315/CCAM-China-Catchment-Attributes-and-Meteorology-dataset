@@ -7,8 +7,6 @@ import xarray
 import subprocess
 
 '''
-
-The directory should be structured as follows:
 ├── soil.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -65,7 +63,7 @@ from file names to variable names if you are processing multiple variables simul
 (3) You will need to specify the valid value ranges for the converted tif files in L196, similarly, a file_name -> value 
 range mapping might be needed if you are processing multiple variable simultaneously.
 
-
+For data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files.
 '''
 
 
