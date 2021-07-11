@@ -8,11 +8,13 @@ Discuss. [preprint], https://doi.org/10.5194/essd-2021-71, in review, 2021.
 
 The manuscript can be found [here](https://essd.copernicus.org/preprints/essd-2021-71/essd-2021-71.pdf) (publicly available).
 
+This repository supports generating 120+ basin attributes for [each] basin given a single or several basin boundar(ies) in shapefile format. 
+
 ## Contact Information
 If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 ## Introduction
-This repository supports generating 120+ basin attributes given a basin boundary in shapefile format within Contiguous China. There are two ways to use this project:
+There are two ways to use this project:
 1. Calculate certain types of attributes using the single scripts; sample outputs are provided in ./output/
 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
 
