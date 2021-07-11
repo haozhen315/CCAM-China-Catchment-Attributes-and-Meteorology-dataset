@@ -22,21 +22,3 @@ Following is the summary of each script that is used to calculate specific basin
 10. soil.py: all soil attributes
 
 In addition, this project supports generating catchment scale meteorological time series based on the SURF_CLI_CHN_MUL_DAY data (https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html), following the steps specified in interpolation.py and meteorological_series.py.
-
-### Meteorological time series:
-
-1. Download the situ observations meteorological data (access permission needed): https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html. The data directory should be structured as follows:
-```bash
-├── Data  
-|   ├── EVP  
-|   |   ├── SURF_CLI_CHN_MUL_DAY-EVP-13240-195101.TXT  
-|   ├── GST  
-|   |   ├── ...  
-|   ├── WIN  
-|   |   ├── ...  
-```
-2. Interpolate site observation climate data to rasters (GeoTIFF). In raster.py, change line 432-441, specify the output directory (will contain the interpolated rasters) and the root directory of the situ observation meteorological data, and possibly other configurations (e.g. resolution and spatial range of interpolation). The default interpolation range covers the whole of China. Note: interpolation can take hours to run.
-3. Calculate the catchment means based on the interpolated rasters. In raster2catchment.py, change line 160-162, specify the path to the interpolated rasters (step 2), catchment shapefiles and the output directory. For the name of the catchment shapefiles, the catchment identifier should be separated by an underscore. And note that the shapefile should have a numeric identifier, e.g. "./shapefiles/0000.shp" or "./shapefiles/basin_0000.shp". For each basin, a "forcing.xlsx" file will be generated in the output directory.  e.g. "./forcing_time_series/basin_name/forcing.xlsx"
-
-### Climate indicator:
-In climate.py, change line 110 and 111, specify the path to the forcing time series (last step) and the output dir (will contain the climate statistic file). Run climate.py. 
