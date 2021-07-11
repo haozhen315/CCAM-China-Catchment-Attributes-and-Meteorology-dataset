@@ -6,8 +6,10 @@ from tqdm import tqdm
 from utils import *
 
 '''
-Catchment-scale average elevation and slope calculation based on the ASTER GDEM.
-Download link: https://asterweb.jpl.nasa.gov/gdem.asp
+Reference: 
+Horn, B.K.P., 1981. Hill shading and the reflectance map. Proceedings of the IEEE 69, 14–47. doi:10.1109/PROC.1981.11918
+
+Catchment-scale elevation and slope calculation based on the ASTER GDEM (https://asterweb.jpl.nasa.gov/gdem.asp).
 
 ├── elev_slope.py
 ├── shapefiles
