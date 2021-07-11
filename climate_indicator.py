@@ -7,6 +7,11 @@ import datetime
 import os
 
 '''
+Reference:
+Woods R A. Analytical model of seasonal climate impacts on snow hydrology: Continuous snowpacks[J]. Advances in Water Resources, 2009, 32(10): 1465-1481.
+Addor, N., A. J. Newman, N. Mizukami and M. P. Clark (2017). "The CAMELS data set: catchment attributes and meteorology for large- sample studies." 
+Hydrology and Earth System Sciences (HESS) 21(10): 5293-5313.
+
 Calculate catchment-scale climate indicator. After the watershed meteorological time series has been successfully generated. 
 
 ├── climate_indicator.py
