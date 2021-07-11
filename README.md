@@ -1,7 +1,7 @@
 If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 This repository supports generating 120+ basin attributes given a basin boundary in shapefile format within Contiguous China. There are two ways to use this project:
-1. Calculate certain types of attributes using the single scripts;
+1. Calculate certain types of attributes using the single scripts; sample outputs are provided in ./output/
 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
 
 
