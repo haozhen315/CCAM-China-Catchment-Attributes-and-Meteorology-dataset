@@ -193,33 +193,33 @@ def binary2tif(file, out_path):
 if __name__ == '__main__':
     print('Soil')
 
-    # # binary
-    # print('Binary to tif...')
-    # files = absolute_file_paths('./data/soil_source_data/binary')
-    # for file in tqdm(files):
-    #     if file + '.tif' in files:
-    #         continue
-    #     binary2tif(file, file + '.tif')
-    #
-    # # netcdf
-    # print('Convert nc to tif...')
-    # filename_varname_mapping = {
-    #     'PDEP.nc': 'PDEP1',
-    #     'SOM.nc': 'SOM',
-    #     'GRAV.nc': 'GRAV',
-    #     'POR.nc': 'POR',
-    #     'SA.nc': 'SA',
-    #     'CL.nc': 'CL',
-    #     'SI.nc': 'SI'
-    # }
-    # files = [x for x in absolute_file_paths('./data/soil_source_data/netcdf') if x.endswith('.nc')]
-    # for file in tqdm(files):
-    #     print(file)
-    #     output_path = file.replace('.nc', '.tif')
-    #     if output_path in files:
-    #         continue
-    #     variable_name = filename_varname_mapping[os.path.basename(file)]
-    #     tif_from_nc(file, variable_name, output_path)
+    # binary
+    print('Binary to tif...')
+    files = absolute_file_paths('./data/soil_source_data/binary')
+    for file in tqdm(files):
+        if file + '.tif' in files:
+            continue
+        binary2tif(file, file + '.tif')
+        
+    # netcdf
+    print('Convert nc to tif...')
+    filename_varname_mapping = {
+        'PDEP.nc': 'PDEP1',
+        'SOM.nc': 'SOM',
+        'GRAV.nc': 'GRAV',
+        'POR.nc': 'POR',
+        'SA.nc': 'SA',
+        'CL.nc': 'CL',
+        'SI.nc': 'SI'
+    }
+    files = [x for x in absolute_file_paths('./data/soil_source_data/netcdf') if x.endswith('.nc')]
+    for file in tqdm(files):
+        print(file)
+        output_path = file.replace('.nc', '.tif')
+        if output_path in files:
+            continue
+        variable_name = filename_varname_mapping[os.path.basename(file)]
+        tif_from_nc(file, variable_name, output_path)
 
     # zonal stats
     res = {}
