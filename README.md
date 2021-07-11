@@ -6,7 +6,7 @@ attributes and meteorology for large sample study in contiguous China, Earth Sys
 Discuss. [preprint], https://doi.org/10.5194/essd-2021-71, in review, 2021.
 ```
 
-The manuscript can be found [here] (https://essd.copernicus.org/preprints/essd-2021-71/essd-2021-71.pdf)(publicly available).
+The manuscript can be found [here](https://essd.copernicus.org/preprints/essd-2021-71/essd-2021-71.pdf) (publicly available).
 
 If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
