@@ -1,10 +1,28 @@
-# catchment-attributes-and-meteorology-for-large-sample-study-in-contiguous-china
-This repository contains the complement code for paper: Zhen Hao, Jin Jin, Runliang Xia, Shimin Tian, &amp; Wushuang Yang. (2021). Catchment attributes and meteorology for large sample study in contiguous China (Version 1.5). http://doi.org/10.5281/zenodo.4704017
+If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
+
+This repository supports generating 120+ basin attributes given a basin boundary in shapefile format within Contiguous China. There are two ways to use this project:
+### 1. Calculate certain types of attributes using the single scripts;
+### 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
 
 
-If you find any problems or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
+## Steps to generate the desired basin attributes:
+Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
+Run the code.
 
-## Instruction:
+Following is the summary of each script that is used to calculate specific basin attributes; for an introduction to each feature, see attributes_description.xlsx:
+1. basin_shape_factor.py: length, form factor, shape factor, compactness coefficient, circulatory ratio, elongation ratio	 
+2. climate_indicator.py: p_seasonality, high_prec_freq, high_prec_dur, high_prec_timing, low_prec_freq, low_prec_dur, low_prec_timing, frac_snow_daily	   
+3. elev_slope.py: elev, slope
+4. glhymps.py: geol_porosity, geol_permeability
+5. glim.py: ig, pa, sc, su, sm, vi, mt, ss, pi, va, wb, pb, vb, nd, py, ev	   
+6. igbp.py: land cover fractions
+7. lai_series.py: catchment scale LAI statistic time series
+8. ndvi_series.py: catchment scale NDVI statistic time series
+9. root_depth.py: root_depth_50, root_depth_99  
+10. soil.py: all soil attributes
+
+In addition, this project supports generating catchment scale meteorological time series based on the SURF_CLI_CHN_MUL_DAY data (https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html), following the steps specified in interpolation.py and meteorological_series.py.
+
 ### Meteorological time series:
 
 1. Download the situ observations meteorological data (access permission needed): https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html. The data directory should be structured as follows:
@@ -22,102 +40,3 @@ If you find any problems or unclear in the code, you can contact me through zhen
 
 ### Climate indicator:
 In climate.py, change line 110 and 111, specify the path to the forcing time series (last step) and the output dir (will contain the climate statistic file). Run climate.py. 
-Note that the script assumes the file path contains the basin name (line 117: name = file.split('\\')[-2]).
-
-### Lithology:
-1. Download the GLiM dataset: https://www.dropbox.com/s/9vuowtebp9f1iud/LiMW_GIS%202015.gdb.zip?dl=0
-2. Import the dataset to ArcMap/QGis
-3. Export GLiM to GeoTIFF format; we specify the cell size as 0.024424875. Using ArcMap/QGis is not necessary; the aim is to convert GliM to a raster form for processing.
-4. Reproject the exported GLiM to EPSG: 4326 using the following script:
-
-> from utils import * <br>
-> reproject_tif(path_glim_tif, path_output, out_crc='EPSG:4326') <br>
-
-5. Run glim.py. The resulting file will appear in the specified output directory. The data directory should be structured as follows:
-
-```bash
-├── glim.py
-├── shapefiles
-|   ├── basin_0000.shp
-|   ├── basin_0001.shp
-├── GlimRaster.tif
-├── GLiMCateNumberMapping.csv
-├── glim_short_long_name.txt
-```
-
-### Land cover:
-1. Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. However, MODIS data is divided into different tiles, which is inconvenient for processing. We have merged the MODIS product into a single tif which can be downloaded here: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC. Download the processed MODIS data (IGBP.tif).
-3. Run igbp.py. The resulting file will appear in the output-dir. Required data folder structure:
-```bash
-(1) IGBP.tif: converted IGBP classification in raster form
-(2) Catchment shapefiles
-├── folder_shp
-|   ├── basin_0000.shp
-|   ├── basin_0000.dbf
-|   ├── basin_0000.sbx
-|   ├── basin_0000.cpg
-|   ├── ...
-```
-
-### Root depth:
-Run rooting_depth.py. Required folder structure:
-```bash
-(1) IGBP.tif: converted IGBP classification in raster form
-(2) calculated_root_depth.txt: calculated root_depth 50/99 for each type of land cover based on Eq. (2) and Table 2 in (Zeng 2001)
-(2) Catchement shapefiles
-├── folder_shp
-|   ├── basin_0000.shp
-|   ├── basin_0000.dbf
-|   ├── basin_0000.sbx
-|   ├── basin_0000.cpg
-|   ├── ...
-```
-
-### Topography (Elev and Slope):
-1. Download ASTER GDEM from https://asterweb.jpl.nasa.gov/gdem.asp; we recommend using NASA Earthdata. 
-2. Run topo_elev.py. Required folder structure:
-```bash
-(1) ASTER GDEM
-├── folder_gdem
-|   ├── ASTGTMV003_N34E111_dem.tif
-|   ├── ASTGTMV003_N32E110_dem.tif
-|   ├── ASTGTMV003_N33E109_dem.tif
-|   ├── ASTGTMV003_N34E108_dem.tif
-|   ├── ...
-(2) Catchment shapefiles
-├── folder_shp
-|   ├── basin_0000.shp
-|   ├── basin_0000.dbf
-|   ├── basin_0000.sbx
-|   ├── basin_0000.cpg
-|   ├── ...
-```
-
-### Topography (Shape characteristics):
-Shape characteristics are calculated based on catchment length (the mainstream length measured from the basin outlet to the remotest point on the basin boundary), catchment perimeters and catchment area. The calculation is first performed in decimal degree, and then the units are converted to kilometres by projecting to UTM coordinate system.
-
-1. Download Asian river network data from: https://www.cger.nies.go.jp/db/gdbd/gdbd_index_e.html. The needed file is "as_streams.shp" in "Asia.zip" (need project to WGS84 and export from the .mdb database using ArcMap/QGIS).
-2. Specify the path to "as_streams.shp", catchment shapefiles and the output directory. Run topo_shape.py.
-
-
-### LAI/NDVI:
-
-1. Download modis product: https://lpdaac.usgs.gov/products/mcd15a3hv006/ (for LAI) and https://lpdaac.usgs.gov/products/mod13q1v006/ (for NDVI). 
-2. The source data are in hdfs format. The provided script first find needed hdfs tiles for the given catchment and merge them. Then perform zonal statistics to get catchment-averaged values. Put the downloaded hdfs files into the folder "./MODIS/MOD13Q1[MCD15A3]" and create an output folder e.g. "./output/ndvi", and run the code lai.py [ndvi.py].
-```bash
-(1) MODIS data
-├── MOD13Q1/MCD15A3H
-|   ├── MCD15A3H.A2002185.h22v04.006.2015149102803.hdf
-|   ├── MCD15A3H.A2002186.h22v04.006.2015149102803.hdf
-|   ├── MCD15A3H.A2002187.h22v04.006.2015149102803.hdf
-|   ├── MCD15A3H.A2002188.h22v04.006.2015149102803.hdf
-(2) Catchment shapefiles
-├── folder_shp
-|   ├── basin_0000.shp
-|   ├── basin_0000.dbf
-|   ├── basin_0000.sbx
-|   ├── basin_0000.cpg
-|   ├── ...
-```
-
-
