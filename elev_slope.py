@@ -6,15 +6,9 @@ from tqdm import tqdm
 from utils import *
 
 '''
+Catchment-scale average elevation and slope calculation based on the ASTER GDEM.
+Download link: https://asterweb.jpl.nasa.gov/gdem.asp
 
-
-Catchment-scale average elevation and slope calculation based on the ASTER GDEM
-Reference: https://asterweb.jpl.nasa.gov/gdem.asp
-
-Requirement:
-Downloaded DEM TIFs.
-
-The directory should be structured as follows:
 ├── elev_slope.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -26,8 +20,6 @@ The directory should be structured as follows:
 |   |   ├── ASTGTMV003_N33E109_dem.tif
 |   |   ├── ASTGTMV003_N34E108_dem.tif
 ├── output
-
-
 '''
 
 
