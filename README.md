@@ -73,7 +73,7 @@ When all the data is ready, the ./data folder will look like this:
 ├── root_depth_calculated.txt
 ```
 
-Following is the summary of each script that is used to calculate specific basin attributes; for an introduction to each feature, see attributes_description.xlsx:
+Following is the summary of each script that is used to calculate specific basin attributes; for an introduction to each feature, see [attributes_description.xlsx](https://github.com/haozhen315/BACC-Basin-Attributes-dataset-for-Contiguous-China/raw/main/attributes_description.xlsx):
 - basin_shape_factor.py: length, form factor, shape factor, compactness coefficient, circulatory ratio, elongation ratio	 
 - climate_indicator.py: p_seasonality, high_prec_freq, high_prec_dur, high_prec_timing, low_prec_freq, low_prec_dur, low_prec_timing, frac_snow_daily	   
 - elev_slope.py: elev, slope
