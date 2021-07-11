@@ -5,19 +5,16 @@ from tqdm import tqdm
 from utils import *
 
 '''
-
-
-Calculate effective rooting depth distribution based on the Modis IGBP classification
-
 Reference:
-https://lpdaac.usgs.gov/products/mcd12q1v006/
 Zeng, X. (2001). "Global vegetation root distribution for land modelling." Journal of Hydrometeorology 2(5): 525-530.
+MODIS MCD12Q1v006 https://lpdaac.usgs.gov/products/mcd12q1v006/
+
+Calculate effective rooting depth distribution based on IGBP classification.
 
 Requirement:
-processed_igbp.tif: Converted IGBP classification in Raster
+processed_igbp.tif: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=waoGXs
 root_depth_calculated.txt: calculated root_depth 50/99 for each type of land cover based on Eq. (2) and Table 2 in (Zeng 2001)
 
-The directory should be structured as follows:
 ├── igbp.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -26,8 +23,6 @@ The directory should be structured as follows:
 |   ├── processed_igbp.tif
 |   ├── root_depth_calculated.txt
 ├── output
-
-
 '''
 
 
