@@ -4,20 +4,14 @@ import pandas as pd
 from utils import *
 
 '''
-
-
-Catchment-scale land cover fraction zonal stats based on the MODIS MCD12Q1 product (LC_Type1)
-
-Reference:
-https://lpdaac.usgs.gov/products/mcd12q1v006/
+Catchment-scale land cover fraction zonal stats based on the MODIS MCD12Q1 product (LC_Type1) (https://lpdaac.usgs.gov/products/mcd12q1v006/)
 
 Requirement:
-processed_igbp.tif: Converted IGBP classification in Raster. Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. 
-However, MODIS data is divided into different tiles, which is inconvenient for processing. 
-We have merged the MODIS product into a single TIF which can be downloaded here: 
-https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC. Download the processed MODIS data.
+processed_igbp.tif: Converted IGBP classification in Raster form.
+Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. However, MODIS data is divided into different tiles, which is inconvenient for processing. 
+We have merged the IGBP classificatio product into a single TIF;
+download link: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC
 
-The directory should be structured as follows:
 ├── igbp.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -25,8 +19,6 @@ The directory should be structured as follows:
 ├── data
 |   ├── processed_igbp.tif
 ├── output
-
-
 '''
 
 
