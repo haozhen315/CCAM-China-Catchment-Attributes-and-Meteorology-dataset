@@ -2,16 +2,10 @@ import os, datetime, subprocess, shutil, re, sys
 from utils import *
 
 '''
+Calculate catchment-scale LAI time-series based on MODIS MOD13Q1/MCD15A3H (https://lpdaac.usgs.gov/products/mcd15a3hv006/ and 
+https://lpdaac.usgs.gov/products/mod13q1v006/)
 
-
-Calculate catchment-scale NDVI/LAI time-series based on MODIS products
-
-Reference:
-https://lpdaac.usgs.gov/products/mcd15a3hv006/
-https://lpdaac.usgs.gov/products/mod13q1v006/
-
-The directory should be structured as follows:
-├── ndvi_series.py/lai_series.py
+├── lai_series.py
 ├── shapefiles
 |   ├── basin_0000.shp
 |   ├── basin_0001.shp
@@ -22,8 +16,6 @@ The directory should be structured as follows:
 |   |   ├── MCD15A3H.A2002187.h22v04.006.2015149102803.hdf
 |   |   ├── MCD15A3H.A2002188.h22v04.006.2015149102803.hdf
 ├── output
-
-
 '''
 
 
