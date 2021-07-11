@@ -1,3 +1,13 @@
+Accompanying code for our paper:
+
+```
+Hao, Z., Jin, J., Xia, R., Tian, S., Yang, W., Liu, Q., Zhu, M., Ma, T., and Jing, C.: Catchment 
+attributes and meteorology for large sample study in contiguous China, Earth Syst. Sci. Data 
+Discuss. [preprint], https://doi.org/10.5194/essd-2021-71, in review, 2021.
+```
+
+The manuscript can be found [here](https://essd.copernicus.org/preprints/essd-2021-71/essd-2021-71.pdf)(publicly available).
+
 If you find any bugs or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 This repository supports generating 120+ basin attributes given a basin boundary in shapefile format within Contiguous China. There are two ways to use this project:
