@@ -4,6 +4,19 @@ from tqdm import tqdm
 from utils import *
 
 
+'''
+The directory should be structured as follows:
+├── glhymps.py
+├── shapefiles
+|   ├── basin_0000.shp
+|   ├── basin_0001.shp
+├── data
+|   ├── processed_permeability.tif # download link: https://1drv.ms/u/s!AqzR0fLyn9KKspF6HAAuXU9Twkkz1Q?e=zJNsVm
+|   ├── processed_porosity.tif # download link: https://1drv.ms/u/s!AqzR0fLyn9KKspF70EPmDubS5V2qTQ?e=0rZzrw
+├── output
+'''
+
+
 class GLHYMPS():
 
     def __init__(self, permeabilit_no_permafrost_raster_tif: str, porosity_raster_tif: str, nan_value=65535):
