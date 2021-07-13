@@ -15,7 +15,7 @@ This repository supports generating 120+ basin attributes for each basin given a
 ## Contact Information
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
-## Introduction
+## Instruction
 There are two ways to use this project:
 1. Calculate certain types of attributes using the single scripts; sample outputs are provided in ./output/
 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
@@ -86,5 +86,7 @@ Following is the summary of each script that is used to calculate specific basin
 - ndvi_series.py: catchment scale NDVI statistic time series
 - root_depth.py: root_depth_50, root_depth_99  
 - soil.py: all soil attributes
+
+## Basin Meteorological time series generating based on SURF_CLI_CHN_MUL_DAY
 
 In addition, this project supports generating catchment scale meteorological time series based on the [SURF_CLI_CHN_MUL_DAY](https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html) data, following the steps specified in interpolation.py and meteorological_series.py.
