@@ -10,7 +10,7 @@ from tqdm import tqdm
 import os
 
 '''
-Calculate catchment-scale meteorological time series from the interpolated raster with multiprocessing.
+Calculate catchment-scale meteorological time series from the interpolated raster with multiprocessing when multiple catchments are being processed.
 
 The directory should be structured as follows:
 ├── shapefiles
