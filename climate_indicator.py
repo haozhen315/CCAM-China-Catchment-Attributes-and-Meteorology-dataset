@@ -83,7 +83,7 @@ def p_seasonality(data):
         sp, pbar, delta_p, _ = scores.iloc[-1]
         delta_p = delta_p / pbar
 
-        p_season = delta_p * np.sign(delta_t) * np.sin(2 * np.pi * (sp - st) / 365)
+        p_season = delta_p * np.sign(delta_t) * np.cos(2 * np.pi * (sp - st) / 365)
         p_seasons.append(p_season)
         print(p_season)
     return np.mean(p_seasons), p_seasons
