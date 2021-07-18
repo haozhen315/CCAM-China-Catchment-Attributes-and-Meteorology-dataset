@@ -1,4 +1,4 @@
-# CBAM: China Basin Attributes and Meteorology dataset
+# CCAM: China Basin Attributes and Meteorology dataset
 
 Accompanying code for our paper:
 
