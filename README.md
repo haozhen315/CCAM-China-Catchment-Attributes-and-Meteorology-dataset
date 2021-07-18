@@ -1,4 +1,4 @@
-# CCCAM: Contiguous China Catchment Attributes and Meteorology
+# CBAM: China Basin Attributes and Meteorology dataset
 
 Accompanying code for our paper:
 
