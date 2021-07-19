@@ -233,4 +233,4 @@ if __name__ == '__main__':
             res[shp_id(shp)][var_name] = zonal_stats_singletif(file, shp, valid_min=0, valid_max=None)
     res = pd.DataFrame(res).T
     res.columns = [x.lower().replace(' ', '_') for x in res.columns]
-    res.to_excel('./output/soil.xlsx')
+    res.reset_index().rename(columns={'index': 'basin_id'}).to_excel('./output/soil.xlsx')
