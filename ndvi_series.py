@@ -326,4 +326,5 @@ if __name__ == '__main__':
         res[key] = np.mean(np.array(res[key]), axis=0)
     res = pd.DataFrame(res).T
     res.columns = ['max', 'min', 'mean']
-    res.to_excel('./output/ndvi.xlsx')
+    res = res.reset_index().rename(columns={'index': 'basin_id'})
+    res.to_excel('./output/ndvi.xlsx', index=None)
