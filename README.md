@@ -16,7 +16,7 @@ This repository supports generating 120+ basin attributes for each basin given a
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 ## Find the data you need
-The data provided by the dataset includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
+The data provided by the [dataset](https://zenodo.org/record/5092162#.YPVcpuhLhPY) includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
 ```python
 >>> import pandas as pd
 >>> import numpy as np
@@ -98,6 +98,5 @@ Following is the summary of each script that is used to calculate specific basin
 - root_depth.py: root_depth_50, root_depth_99  
 - soil.py: all soil attributes
 
-## A Program for Generating the Average Meteorological Time Series of the Basin[s] based on SURF_CLI_CHN_MUL_DAY
-
+## A program to calculate the meteorological time series of a custom watershed
 In addition, this project supports generating catchment scale meteorological time series based on the [SURF_CLI_CHN_MUL_DAY](https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html) data, following the steps specified in interpolation.py and meteorological_series.py.
