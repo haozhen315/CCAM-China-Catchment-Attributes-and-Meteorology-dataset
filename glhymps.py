@@ -50,4 +50,5 @@ if __name__ == '__main__':
     res = {}
     for shape_file in tqdm([file for file in absolute_file_paths('./shapefiles') if file.endswith('.shp')]):
         res[shp_id(shape_file)] = glhympser.zonal_stats_glhymps(shape_file=shape_file)
-    pd.DataFrame(res).T.to_excel('./output/glhymps.xlsx')
+    res = pd.DataFrame(res).T.reset_index().rename(columns={'index': 'basin_id'})
+    res.to_excel('./output/glhymps.xlsx', index=None)
