@@ -4,14 +4,20 @@ import pandas as pd
 from utils import *
 
 '''
-Catchment-scale land cover fraction zonal stats based on the MODIS MCD12Q1 product (LC_Type1) (https://lpdaac.usgs.gov/products/mcd12q1v006/)
+
+
+Catchment-scale land cover fraction zonal stats based on the MODIS MCD12Q1 product (LC_Type1)
+
+Reference:
+https://lpdaac.usgs.gov/products/mcd12q1v006/
 
 Requirement:
-processed_igbp.tif: Converted IGBP classification in Raster form.
-Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. However, MODIS data is divided into different tiles, which is inconvenient for processing. 
-We have merged the IGBP classificatio product into a single TIF;
-download link: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC
+processed_igbp.tif: Converted IGBP classification in Raster. Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. 
+However, MODIS data is divided into different tiles, which is inconvenient for processing. 
+We have merged the MODIS product into a single TIF which can be downloaded here: 
+https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC. Download the processed MODIS data.
 
+The directory should be structured as follows:
 ├── igbp.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -19,6 +25,8 @@ download link: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC
 ├── data
 |   ├── processed_igbp.tif
 ├── output
+
+
 '''
 
 
@@ -95,18 +103,18 @@ def igbp_stats(shapefile: str, igbp_tif: str, nan_value=255):
 
     res = {}
     for name in names:
-        res[name + '(fraction)'] = 0
+        res[name] = 0
     for num, name in zip(count, land_class):
         if name != 'nan':
-            res[name + '(fraction)'] = num / np.sum(count)
+            res[name] = num / np.sum(count)
 
-    print('shapefile:', shapefile)
-    print(res)
+    # print('shapefile:', shapefile)
+    # print(res)
     return res
 
 
 if __name__ == '__main__':
-    print('Land Cover')
+    print('-> land cover')
     igbp_tif = "./data/processed_igbp.tif"
     shp_dir = './shapefiles'
     out = './output/igbp.xlsx'

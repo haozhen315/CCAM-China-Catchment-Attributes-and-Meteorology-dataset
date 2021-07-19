@@ -9,24 +9,12 @@ from utils import *
 from shapely.ops import transform
 
 '''
-Reference: 
-Subramanya, K. (2013). Engineering Hydrology, 4e, Tata McGraw-Hill Education.
-Masutomi, Y., Y. Inui, K. Takahashi and Y. Matsuoka (2009). "Development of highly accurate global polygonal drainage basin data." 
-Hydrological Processes: An International Journal 23(4): 572-584.
-
-├── basin_shape_factor.py
-├── shapefiles
-|   ├── basin_0000.shp
-|   ├── basin_0001.shp
-├── data
-|   ├── river_network
-|   |   ├── as_streams_wgs.shp
-├── output
 
 Drainage basin boundary data and the river network data are obtained from the Global Drainage Basin Database (GDBD) 
 dataset: https://www.cger.nies.go.jp/db/gdbd/gdbd_index_e.html. Here, determining the basin outlet needs river network 
 and basin boundaries as input. Since the river network provided by GDBD did not cover all basins (mainly watersheds 
 where the river stream is not clear), basin outlet and hence river length cannot be derived for some of the basins.
+
 '''
 
 
@@ -64,7 +52,7 @@ def find_outlet(catchment_shp, stream_shps):
 
     basin_polygon = Polygon(basin.points)
     if not basin_polygon.is_valid:
-        print('invalid polygon')
+        print('-> invalid polygon')
         return
     for stream in stream_shapes:
         line = LineString(stream.points)
@@ -88,6 +76,11 @@ def get_record(basins, i):
     field_names = [field[0] for field in fields]
     atr = dict(zip(field_names, basins.shapeRecord(i).record))
     return atr
+
+
+def shapefile_lon_lat(basin):
+    xy = Polygon(basin.shape(0).points).centroid.xy
+    return {'lat': xy[0][0], 'lon': xy[1][0]}
 
 
 def catchment_perimeter(catchment_shp):
@@ -192,7 +185,7 @@ def basin_topo_stats(basin_shps, stream_shps):
     for basin_shp in tqdm(basin_shps):
         basin = shapefile.Reader(basin_shp)
         gdbd_id = int(get_record(basin, 0)['GDBD_ID'])
-        print(gdbd_id)
+        # print(gdbd_id)
         L = longest_distance(basin_shp, stream_shps)
         A = basin_area(basin_shp)
         P = catchment_perimeter(basin_shp)
@@ -202,6 +195,7 @@ def basin_topo_stats(basin_shps, stream_shps):
                             'Compactness coefficient': compactness_coefficient(P, A),
                             'Circulatory ratio': circulatory_ratio(P, A),
                             'Elongation ratio': elongation_ratio(A, L)}
+            res[gdbd_id].update(shapefile_lon_lat(basin))
         # If the given polygon is invalid, the length attribute (L) cannot be determined, and other variables depend on that.
         else:
             res[gdbd_id] = {'Length': None, 'Area': A, 'Form factor': None,
@@ -209,11 +203,12 @@ def basin_topo_stats(basin_shps, stream_shps):
                             'Compactness coefficient': None,
                             'Circulatory ratio': None,
                             'Elongation ratio': None}
+            res[gdbd_id].update(shapefile_lon_lat(basin))
     return res
 
 
 if __name__ == '__main__':
-    print('Calculating basin shape factors')
+    print('-> basin shape factors')
     shp_folfer = './shapefiles'
     stream_shps = './data/river_network/as_streams_wgs.shp'
     out_dir = './output'
@@ -225,3 +220,4 @@ if __name__ == '__main__':
     res.columns = [x.lower().replace(' ', '_') for x in res.columns]
     res = res.rename(columns={'index': 'basin_id'})
     res.to_excel(f'{out_dir}/shape_factor.xlsx', index=None)
+    # print('-> done')

@@ -7,6 +7,8 @@ import xarray
 import subprocess
 
 '''
+
+The directory should be structured as follows:
 ├── soil.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -63,7 +65,7 @@ from file names to variable names if you are processing multiple variables simul
 (3) You will need to specify the valid value ranges for the converted tif files in L196, similarly, a file_name -> value 
 range mapping might be needed if you are processing multiple variable simultaneously.
 
-For data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files.
+
 '''
 
 
@@ -191,18 +193,20 @@ def binary2tif(file, out_path):
 
 
 if __name__ == '__main__':
-    print('Soil')
+    print('-> soil')
 
     # binary
-    print('Binary to tif...')
+    print('-> binary to tif')
     files = absolute_file_paths('./data/soil_source_data/binary')
     for file in tqdm(files):
+        if '.' in file:
+            continue
         if file + '.tif' in files:
             continue
         binary2tif(file, file + '.tif')
-        
+
     # netcdf
-    print('Convert nc to tif...')
+    print('-> nc to tif')
     filename_varname_mapping = {
         'PDEP.nc': 'PDEP1',
         'SOM.nc': 'SOM',
@@ -212,9 +216,9 @@ if __name__ == '__main__':
         'CL.nc': 'CL',
         'SI.nc': 'SI'
     }
-    files = [x for x in absolute_file_paths('./data/soil_source_data/netcdf') if x.endswith('.nc')]
+    files = absolute_file_paths('./data/soil_source_data/netcdf')
     for file in tqdm(files):
-        print(file)
+        # print(file)
         output_path = file.replace('.nc', '.tif')
         if output_path in files:
             continue
@@ -222,15 +226,20 @@ if __name__ == '__main__':
         tif_from_nc(file, variable_name, output_path)
 
     # zonal stats
+    print('-> zonal stats')
     res = {}
     files = [x for x in absolute_file_paths('./data/soil_source_data') if x.endswith('.tif')]
     shps = [x for x in absolute_file_paths('./shapefiles') if x.endswith('.shp')]
     for file in files:
-        for shp in shps:
-            if not shp_id(shp) in res:
-                res[shp_id(shp)] = {}
-            var_name = os.path.basename(file).split('.')[0]
-            res[shp_id(shp)][var_name] = zonal_stats_singletif(file, shp, valid_min=0, valid_max=None)
+        try:
+            for shp in shps:
+                if not shp_id(shp) in res:
+                    res[shp_id(shp)] = {}
+                var_name = os.path.basename(file).split('.')[0].replace('_downscaled', '')
+                res[shp_id(shp)][var_name] = zonal_stats_singletif(file, shp, valid_min=0, valid_max=None)
+        except Exception as e:
+            print(e)
+            continue
     res = pd.DataFrame(res).T
     res.columns = [x.lower().replace(' ', '_') for x in res.columns]
     res.reset_index().rename(columns={'index': 'basin_id'}).to_excel('./output/soil.xlsx')

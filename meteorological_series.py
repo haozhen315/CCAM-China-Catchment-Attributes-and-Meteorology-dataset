@@ -10,7 +10,8 @@ from tqdm import tqdm
 import os
 
 '''
-Calculate catchment-scale meteorological time series from the interpolated raster with multiprocessing when multiple catchments are being processed.
+
+Calculate catchment-scale meteorological time series from the interpolated raster with multiprocessing
 
 The directory should be structured as follows:
 ├── shapefiles
@@ -24,6 +25,7 @@ The directory should be structured as follows:
 |   ├── 大型蒸发量
 |   |   |   ├── ...
 ├── output
+
 '''
 
 # interpolated raster extent, no need to change
@@ -120,7 +122,7 @@ def main():
     tifs = absoluteFilePaths(folder_raster)
     shp_points_d = {}
     for shp in shps:
-        name = shp.split('_')[-1].split('.')[0]
+        name = os.path.basename(shp).split('_')[-1].split('.')[0]
         points = list(np.round(shp_points(shp), 1))
         shp_points_d[name] = points
     names = list(shp_points_d.keys())

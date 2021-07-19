@@ -6,11 +6,15 @@ from tqdm import tqdm
 from utils import *
 
 '''
-Reference: 
-Horn, B.K.P., 1981. Hill shading and the reflectance map. Proceedings of the IEEE 69, 14–47. doi:10.1109/PROC.1981.11918
 
-Catchment-scale elevation and slope calculation based on the ASTER GDEM (https://asterweb.jpl.nasa.gov/gdem.asp).
 
+Catchment-scale average elevation and slope calculation based on the ASTER GDEM
+Reference: https://asterweb.jpl.nasa.gov/gdem.asp
+
+Requirement:
+Downloaded DEM TIFs.
+
+The directory should be structured as follows:
 ├── elev_slope.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -22,6 +26,8 @@ Catchment-scale elevation and slope calculation based on the ASTER GDEM (https:/
 |   |   ├── ASTGTMV003_N33E109_dem.tif
 |   |   ├── ASTGTMV003_N34E108_dem.tif
 ├── output
+
+
 '''
 
 
@@ -49,15 +55,16 @@ def fetch_shapefile_needed_DEM_range(shpfile: str):
 
 def elev_mean(shpfile: str, dem_folder: str):
     ''' calculate mean elevation of the catchment '''
-    if os.path.isfile(tmp_merged):
-        os.remove(tmp_merged)
-    if os.path.isfile(tmp_reprojected):
-        os.remove(tmp_reprojected)
+    # if os.path.isfile(tmp_merged):
+    #     os.remove(tmp_merged)
+    # if os.path.isfile(tmp_reprojected):
+    #     os.remove(tmp_reprojected)
+
     # get needed N E range
     needed_Ns = fetch_shapefile_needed_DEM_range(shpfile)['Ns']
     needed_Es = fetch_shapefile_needed_DEM_range(shpfile)['Es']
 
-    print(f"{os.path.basename(shpfile)}: N range: {needed_Ns}, E range: {needed_Es}")
+    print(f"-> {os.path.basename(shpfile)}: lat range: {needed_Ns}, lon range: {needed_Es}")
 
     # get needed tifs
     files = absolute_file_paths(dem_folder)
@@ -82,7 +89,7 @@ def elev_mean(shpfile: str, dem_folder: str):
         res = zonal_stats_singletif(tmp_reprojected, shpfile)
     except ValueError as e:
         print(e)
-        print(needed_Es, needed_Ns, needed_tifs)
+        print('->', needed_Es, needed_Ns, needed_tifs)
         return np.nan
     return res
 
@@ -97,10 +104,10 @@ def calculate_slope(DEM):
 
 def slope_mean(shpfile: str, dem_folder: str):
     ''' calculate the slope of a given catchment '''
-    if os.path.isfile(tmp_merged):
-        os.remove(tmp_merged)
-    if os.path.isfile(tmp_reprojected):
-        os.remove(tmp_reprojected)
+    # if os.path.isfile(tmp_merged):
+    #     os.remove(tmp_merged)
+    # if os.path.isfile(tmp_reprojected):
+    #     os.remove(tmp_reprojected)
     # get needed N E range
     needed_Ns = fetch_shapefile_needed_DEM_range(shpfile)['Ns']
     needed_Es = fetch_shapefile_needed_DEM_range(shpfile)['Es']
@@ -146,25 +153,25 @@ def slope_mean(shpfile: str, dem_folder: str):
         res = zonal_stats_singletif(tmp_slope, shpfile)
     except ValueError as e:
         print(e)
-        print(needed_Es, needed_Ns, needed_tifs)
+        print('->', needed_Es, needed_Ns, needed_tifs)
         return np.nan
     return res
 
 
 def main(outpath):
     res = []
-    print(len([file for file in absolute_file_paths(shp_folfer) if file.endswith('.shp')]))
-    shps = [file for file in absolute_file_paths(shp_folfer) if file.endswith('.shp')]
+    # print(len([file for file in absolute_file_paths(shp_folfer) if file.endswith('.shp')]))
+    shps = [file for file in absolute_file_paths(shp_folfer) if file.endswith('.shp')][:1]
     for shpfile in tqdm(shps):
-        tmp_res = {'shp_id': shp_id(shpfile), 'elev(m)': elev_mean(shpfile, dem_folder),
-                   'slope(m/km)': slope_mean(shpfile, dem_folder)}
+        tmp_res = {'shp_id': shp_id(shpfile), 'elev': elev_mean(shpfile, dem_folder),
+                   'slope': slope_mean(shpfile, dem_folder)}
         res.append(tmp_res)
     res = pd.DataFrame(res).rename(columns={'shp_id': 'basin_id'})
     res.to_excel(outpath, index=None)
 
 
 if __name__ == '__main__':
-    print('Calculating elev and slope')
+    print('-> calculating elev and slope')
     dem_folder = './data/dems'
     shp_folfer = './shapefiles'
     outpath = './output/elev_slope.xlsx'

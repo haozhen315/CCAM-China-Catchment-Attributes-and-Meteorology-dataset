@@ -5,16 +5,19 @@ from tqdm import tqdm
 from utils import *
 
 '''
-Reference:
-Zeng, X. (2001). "Global vegetation root distribution for land modelling." Journal of Hydrometeorology 2(5): 525-530.
-MODIS MCD12Q1v006 https://lpdaac.usgs.gov/products/mcd12q1v006/
 
-Calculate effective rooting depth distribution based on IGBP classification.
+
+Calculate effective rooting depth distribution based on the Modis IGBP classification
+
+Reference:
+https://lpdaac.usgs.gov/products/mcd12q1v006/
+Zeng, X. (2001). "Global vegetation root distribution for land modelling." Journal of Hydrometeorology 2(5): 525-530.
 
 Requirement:
-processed_igbp.tif: https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=waoGXs
+processed_igbp.tif: Converted IGBP classification in Raster
 root_depth_calculated.txt: calculated root_depth 50/99 for each type of land cover based on Eq. (2) and Table 2 in (Zeng 2001)
 
+The directory should be structured as follows:
 ├── igbp.py
 ├── shapefiles
 |   ├── basin_0000.shp
@@ -23,6 +26,8 @@ root_depth_calculated.txt: calculated root_depth 50/99 for each type of land cov
 |   ├── processed_igbp.tif
 |   ├── root_depth_calculated.txt
 ├── output
+
+
 '''
 
 
@@ -85,14 +90,14 @@ def root_depth_50_99_stats(shape_file: str, igbp_tif: str, depth_mapper: DepthMa
     res = extract_raster_by_shape_file(raster=igbp_tif, shape_file=shape_file, output_file=None)
     res = res[res != -9999]
     res_list = res[res < 17].flatten().tolist()
-    print('mapping igbp classification to effective rooting depth for each pixel')
+    print('-> mapping igbp classification to effective rooting depth for each pixel')
     depth50 = [depth_mapper.igbp2depth50(index) for index in tqdm(res_list, position=0, leave=True, file=sys.stdout)]
     depth99 = [depth_mapper.igbp2depth99(index) for index in tqdm(res_list, position=0, leave=True, file=sys.stdout)]
     return {'root_depth_50': np.mean(depth50), 'root_depth_99': np.mean(depth99)}
 
 
 if __name__ == '__main__':
-    print('Root depth')
+    print('-> root depth')
     igbp_tif = './data/processed_igbp.tif'
     root_depth = "./data/root_depth_calculated.txt"
     shp_dir = './shapefiles'

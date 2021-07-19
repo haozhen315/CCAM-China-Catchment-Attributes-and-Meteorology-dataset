@@ -2,10 +2,16 @@ import os, datetime, subprocess, shutil, re, sys
 from utils import *
 
 '''
-Calculate catchment-scale LAI time-series based on MODIS MOD13Q1/MCD15A3H (https://lpdaac.usgs.gov/products/mcd15a3hv006/ and 
-https://lpdaac.usgs.gov/products/mod13q1v006/)
 
-├── lai_series.py
+
+Calculate catchment-scale NDVI/LAI time-series based on MODIS products
+
+Reference:
+https://lpdaac.usgs.gov/products/mcd15a3hv006/
+https://lpdaac.usgs.gov/products/mod13q1v006/
+
+The directory should be structured as follows:
+├── ndvi_series.py/lai_series.py
 ├── shapefiles
 |   ├── basin_0000.shp
 |   ├── basin_0001.shp
@@ -16,6 +22,8 @@ https://lpdaac.usgs.gov/products/mod13q1v006/)
 |   |   ├── MCD15A3H.A2002187.h22v04.006.2015149102803.hdf
 |   |   ├── MCD15A3H.A2002188.h22v04.006.2015149102803.hdf
 ├── output
+
+
 '''
 
 
@@ -162,7 +170,7 @@ def clear_dir(folder: str):
     :return: None
     '''
     shutil.rmtree(folder)
-    print(f'{folder} cleared')
+    print(f'-> {folder} cleared')
 
 
 class Modis():
@@ -182,17 +190,17 @@ class Modis():
         print('feature_index: ', feature_index)
         print('feature_name: ', feature_name)
         print('----------------------')
-        print('Clear the tmp folder, if not exists, creat one')
+        print('clear the tmp folder, if not exists, creat one')
         files = absolute_file_paths(self.tmp_folder)
         # files = get_qualified_hdf_files_from_folder(self.hdf_folder, self.product, self.zones)
-        print('Convert hdf to tif...')
+        print('convert hdf to tif...')
         for file in tqdm(files, position=0, leave=True, file=sys.stdout):
             hdf_to_tif(file, tmp_dir)
-        print('Downscale tif...')
+        print('downscale tif...')
         for file in absolute_file_paths(tmp_dir):
             if file.endswith('.tif'):
                 gdal_downsample_tif(file, tmp_dir, 50)
-        print('Reproject tif to WGS84...')
+        print('reproject tif to wgs84')
         tifs = [file for file in absolute_file_paths(tmp_dir) if
                 (file.endswith('.tif') and '_downscaled' in file)]
         for file in tqdm(tifs, position=0, leave=True, file=sys.stdout):
@@ -200,7 +208,7 @@ class Modis():
             reproject_tif(file, name)
         tifs_84 = get_84_tifs(tmp_dir)
         groups, unique_features = group_tif_files_by_date_feature(tifs_84)
-        print('Merge tif...')
+        print('merge tif...')
         if not os.path.isdir(merged_tifs_folder):
             os.makedirs(merged_tifs_folder)
         merged_tifs = {}
@@ -315,7 +323,7 @@ def summary_year(year, data_root, out_dir, root_dir):
 shp_dir = './shapefiles'
 tmp_dir = './tmp'
 if __name__ == '__main__':
-    print('LAI time series')
+    print('-> lai time series')
     res = {}
     for year in range(2002, 2003):
         if not os.path.isdir(f'./output/lai/{year}'):
