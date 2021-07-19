@@ -159,7 +159,7 @@ def main(outpath):
         tmp_res = {'shp_id': shp_id(shpfile), 'elev(m)': elev_mean(shpfile, dem_folder),
                    'slope(m/km)': slope_mean(shpfile, dem_folder)}
         res.append(tmp_res)
-    res = pd.DataFrame(res).rename(columns={'shp_id': ''})
+    res = pd.DataFrame(res).rename(columns={'shp_id': 'basin_id'})
     res.to_excel(outpath, index=None)
 
 
