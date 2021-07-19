@@ -163,4 +163,5 @@ if __name__ == '__main__':
     res = {}
     for shape_file in tqdm([file for file in absolute_file_paths('./shapefiles') if file.endswith('.shp')]):
         res[shp_id(shape_file)] = glimer.extract_basin_attributes_glim_all(shape_file=shape_file)
-    pd.DataFrame(res).T.to_excel('output/glim.xlsx')
+    res = pd.DataFrame(res).T.reset_index().rename(columns={'index': 'basin_id'})
+    res.to_excel('output/glim.xlsx', index=None)
