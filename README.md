@@ -15,7 +15,18 @@ This repository supports generating 120+ basin attributes for each basin given a
 ## Contact Information
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
-## Instruction
+## Find the data you need
+The data provided by the dataset includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
+```python
+>>> import pandas as pd
+>>> import numpy as np
+>>> x, y = 29.7060803, 120.1387931
+>>> loc_data = pd.read_csv('./2_location_and_topography.txt')
+>>> data['dis'] = np.sqrt((data['lat'] - x)**2 + (data['lon'] - y)**2)
+>>> data.sort_values('dis')[:3]
+```
+
+## Guidelines for generating data for custom watersheds
 There are two ways to use this project:
 1. Calculate certain types of attributes using the single scripts; sample outputs are provided in ./output/
 2. Calculate all characteristics for the given basins using the calculate_all_attributes.py.
