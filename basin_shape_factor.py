@@ -221,5 +221,7 @@ if __name__ == '__main__':
     basin_shps = [file for file in absolute_file_paths(shp_folfer) if '.shp' in file]
     topo_stats = basin_topo_stats(basin_shps=basin_shps, stream_shps=stream_shps)
     res = pd.DataFrame(topo_stats).T
+    res = res.reset_index()
     res.columns = [x.lower().replace(' ', '_') for x in res.columns]
-    res.to_excel(f'{out_dir}/shape_factor.xlsx')
+    res = res.rename(columns={'index': 'basin_id'})
+    res.to_excel(f'{out_dir}/shape_factor.xlsx', index=None)
