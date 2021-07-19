@@ -102,4 +102,4 @@ if __name__ == '__main__':
     res = {}
     for shape_file in [file for file in absolute_file_paths(shp_dir) if file.endswith('.shp')]:
         res[shp_id(shape_file)] = root_depth_50_99_stats(shape_file, igbp_tif, depth_mapper)
-    pd.DataFrame(res).T.to_excel(out)
+    pd.DataFrame(res).T.reset_index().rename(columns={'index': 'basin_id'}).to_excel(out)
