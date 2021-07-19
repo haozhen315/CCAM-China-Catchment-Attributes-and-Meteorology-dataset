@@ -116,4 +116,5 @@ if __name__ == '__main__':
         res[shp_id(shape_file)] = igbp_stats(shapefile=shape_file, igbp_tif=igbp_tif)
     res = pd.DataFrame(res).T
     res.columns = [x.lower().replace(' ', '_') for x in res.columns]
-    res.to_excel(out)
+    res = res.reset_index().rename(columns={'index': 'basin_id'})
+    res.to_excel(out, index=None)
