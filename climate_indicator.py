@@ -184,4 +184,5 @@ if __name__ == '__main__':
                      'low_prec_freq': low_prec_freq(pre), 'low_prec_dur': low_prec_dur(pre),
                      'low_prec_timing': low_prec_timing(pre), 'frac_snow_daily': frac_snow_daily(df),
                      'p_seasonality': p_seasonality(df)}
-    pd.DataFrame(res).T.to_excel(f'{output_dir}/climate.xlsx')
+    res = pd.DataFrame(res).T.reset_index().rename(columns={'index': 'basin_id'})
+    res.to_excel(f'{output_dir}/climate.xlsx', index=None)
