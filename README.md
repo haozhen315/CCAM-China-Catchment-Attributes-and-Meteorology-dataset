@@ -33,7 +33,7 @@ There are two ways to use this project:
 
 
 Steps to generate the desired basin attributes:
-1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you will need to downscale large TIF files;
+1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you may need to downscale large TIF files if you use GDAL=2.2.2;
 2. Run the code.
 
 When all the data is ready, the ./data folder will look like this:
