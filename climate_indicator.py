@@ -35,7 +35,7 @@ def p_seasonality(data):
     from datetime import timedelta
     from tqdm import tqdm
 
-    data = data.loc[datetime.datetime(2009, 1, 1): datetime.datetime(2014, 12, 31)]
+    data = data.loc[datetime.datetime(2009, 1, 1): datetime.datetime(2009, 12, 31)]
 
     best_score = 0
     for st in range(365):
@@ -44,8 +44,7 @@ def p_seasonality(data):
         for i in range(len(data)):
             t = data.index[i].day_of_year
             X.append(np.sin(2 * np.pi * (t - st) / 365))
-            # y.append(data.iloc[i]['TEM'])
-            y.append(data.iloc[i]['平均气温'])
+            y.append(data.iloc[i]['TEM'])
         X = np.array(X).reshape(-1, 1)
         y = np.array(y)
         reg = LinearRegression(fit_intercept=True, n_jobs=-1).fit(X, y)
@@ -65,8 +64,7 @@ def p_seasonality(data):
         for i in range(len(data)):
             t = data.index[i].day_of_year
             X.append(np.sin(2 * np.pi * (t - sp) / 365))
-            # y.append(data.iloc[i]['PRE'])
-            y.append(data.iloc[i]['20-20时累计降水量'])
+            y.append(data.iloc[i]['PRE'])
         X = np.array(X).reshape(-1, 1)
         y = np.array(y)
         reg = LinearRegression(fit_intercept=True, n_jobs=-1).fit(X, y)
