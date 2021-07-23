@@ -155,7 +155,9 @@ def low_prec_timing(data: str):
 
 
 def frac_snow_daily(df):
-    return len(df.loc[df['平均气温'] < 0].loc[df['20-20时累计降水量'] > 0]) / len(df)
+    frac_snow = len(df.loc[df['平均气温'] < 0].loc[df['20-20时累计降水量'] > 0]) / len(df.loc[df['20-20时累计降水量'] > 0])
+    # frac_snow = len(df.loc[df['TEM'] < 0].loc[df['PRE'] > 0]) / len(df.loc[df['PRE'] > 0])
+    return frac_snow
 
 
 if __name__ == '__main__':
