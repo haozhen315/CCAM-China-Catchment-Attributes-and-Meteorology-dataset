@@ -15,7 +15,7 @@ This repository supports generating 120+ basin attributes for each basin given a
 ## Contact Information
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
-## Dependencies
+## Dependency
 fiona==1.8.4<br/>
 gdal==2.3.1<br/>
 geopandas==0.6.1<br/>
@@ -118,3 +118,10 @@ Following is the summary of each script that is used to calculate specific basin
 
 ## A program to calculate the meteorological time series of a custom watershed
 In addition, this project supports generating catchment scale meteorological time series based on the [SURF_CLI_CHN_MUL_DAY](https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html) data, following the steps specified in interpolation.py and meteorological_series.py.
+
+
+## Citation
+If you use our code or method in your work, please cite the following:
+```
+Hao, Z., Jin, J., Xia, R., Tian, S., Yang, W., Liu, Q., Zhu, M., Ma, T., and Jing, C.: Catchment attributes and meteorology for large sample study in contiguous China, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2021-71, in review, 2021.
+```
