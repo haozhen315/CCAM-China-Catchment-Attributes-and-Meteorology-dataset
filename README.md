@@ -16,20 +16,20 @@ This repository supports generating 120+ basin attributes for each basin given a
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 ## Dependencies
-fiona==1.8.4
-gdal==2.3.1
-geopandas==0.6.1
-netcdf4==1.4.2
-pyproj==3.1.0 
-rasterio==1.0.21
-rasterstats==0.14.0
-richdem==0.3.4
-scikit-learn==0.24.2
-pyshp==2.1.3
-scipy==1.6.2
-xarray==0.17.0
-tqdm==4.60.0
-shapely==1.6.4.post2
+fiona==1.8.4<br/>
+gdal==2.3.1<br/>
+geopandas==0.6.1<br/>
+netcdf4==1.4.2<br/>
+pyproj==3.1.0<br/>
+rasterio==1.0.21<br/>
+rasterstats==0.14.0<br/>
+richdem==0.3.4<br/>
+scikit-learn==0.24.2<br/>
+pyshp==2.1.3<br/>
+scipy==1.6.2<br/>
+xarray==0.17.0<br/>
+tqdm==4.60.0<br/>
+shapely==1.6.4.post2<br/>
 pandas==1.2.3
 
 ## Find the data you need
