@@ -15,6 +15,23 @@ This repository supports generating 120+ basin attributes for each basin given a
 ## Contact Information
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
+## Dependencies
+fiona==1.8.4
+gdal==2.3.1
+geopandas==0.6.1
+netcdf4==1.4.2
+pyproj==3.1.0 
+rasterio==1.0.21
+rasterstats==0.14.0
+richdem==0.3.4
+scikit-learn==0.24.2
+pyshp==2.1.3
+scipy==1.6.2
+xarray==0.17.0
+tqdm==4.60.0
+shapely==1.6.4.post2
+pandas==1.2.3
+
 ## Find the data you need
 The data provided by the [dataset](https://zenodo.org/record/5092162#.YPVcpuhLhPY) includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
 ```python
