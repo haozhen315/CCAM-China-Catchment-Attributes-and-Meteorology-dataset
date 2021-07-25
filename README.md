@@ -15,25 +15,6 @@ This repository supports generating 120+ basin attributes for each basin given a
 ## Contact Information
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
-
-## Dependencies
-fiona==1.8.4<br/>
-gdal==2.3.1<br/>
-geopandas==0.6.1<br/>
-netcdf4==1.4.2<br/>
-pyproj==3.1.0<br/>
-rasterio==1.0.21<br/>
-rasterstats==0.14.0<br/>
-richdem==0.3.4<br/>
-scikit-learn==0.24.2<br/>
-pyshp==2.1.3<br/>
-scipy==1.6.2<br/>
-xarray==0.17.0<br/>
-tqdm==4.60.0<br/>
-shapely==1.6.4.post2<br/>
-pandas==1.2.3
-
-
 ## Find the data you need
 The data provided by the [dataset](https://zenodo.org/record/5092162#.YPVcpuhLhPY) includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
 ```python
@@ -120,3 +101,20 @@ Following is the summary of each script that is used to calculate specific basin
 
 ## A program to calculate the meteorological time series of a custom watershed
 In addition, this project supports generating catchment scale meteorological time series based on the [SURF_CLI_CHN_MUL_DAY](https://data.cma.cn/data/cdcdetail/dataCode/SURF_CLI_CHN_MUL_DAY_V3.0.html) data, following the steps specified in interpolation.py and meteorological_series.py.
+
+## Dependencies
+fiona==1.8.4<br/>
+gdal==2.3.1<br/>
+geopandas==0.6.1<br/>
+netcdf4==1.4.2<br/>
+pyproj==3.1.0<br/>
+rasterio==1.0.21<br/>
+rasterstats==0.14.0<br/>
+richdem==0.3.4<br/>
+scikit-learn==0.24.2<br/>
+pyshp==2.1.3<br/>
+scipy==1.6.2<br/>
+xarray==0.17.0<br/>
+tqdm==4.60.0<br/>
+shapely==1.6.4.post2<br/>
+pandas==1.2.3
