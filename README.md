@@ -12,7 +12,7 @@ The manuscript can be found [here](https://essd.copernicus.org/preprints/essd-20
 
 This repository supports generating 120+ basin attributes for each basin given a single or several basin boundaries. Except for the netCDF and Meteorological time series data, which only covers China, other data sources are global, which means that the code can also be used to calculate these attributes of watersheds in other regions.
 
-## Contact Information
+## Contact
 If you find any bug or unclear in the code, you can contact me through zhen.hao18 at alumni.imperial.ac.uk
 
 ## Dependency
