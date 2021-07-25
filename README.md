@@ -124,4 +124,3 @@ In addition, this project supports generating catchment scale meteorological tim
 If you use our code or method in your work, please cite the following:
 ```
 Hao, Z., Jin, J., Xia, R., Tian, S., Yang, W., Liu, Q., Zhu, M., Ma, T., and Jing, C.: Catchment attributes and meteorology for large sample study in contiguous China, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2021-71, in review, 2021.
-```
