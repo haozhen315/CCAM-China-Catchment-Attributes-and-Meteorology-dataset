@@ -15,7 +15,7 @@ properties at the Earth surface. Geochemistry, Geophysics, Geosystems, 13. DOI: 
 
 Requirement: 
 (1) processed_glim.tif: Converted GliM Raster. There are two ways to obtain this file, first is to download our preprocessed 
-raster: https://1drv.ms/u/s!AqzR0fLyn9KKspF5Vktb-zlmd_Ctxg?e=yBnQdS
+https://zenodo.org/record/5137288/files/9_code_data.zip?download=1
 
 Alternatively, you can download the original GLiM dataset and convert it to raster:
 1. Download the glim dataset: https://www.dropbox.com/s/9vuowtebp9f1iud/LiMW_GIS%202015.gdb.zip?dl=0; 
