@@ -4,8 +4,12 @@ from tqdm import tqdm
 from utils import *
 
 '''
-Supporting data: 
-https://zenodo.org/record/5137288/files/9_code_data.zip?download=1
+Data:
+Source: https://dataverse.scholarsportal.info/dataset.xhtml?persistentId=doi:10.5683/SP2/DLGXYO
+Processed: https://zenodo.org/record/5137288/files/9_code_data.zip?download=1
+
+Reference: 
+Gleeson, Tom, 2018, "GLobal HYdrogeology MaPS (GLHYMPS) of permeability and porosity", https://doi.org/10.5683/SP2/DLGXYO, Scholars Portal Dataverse, V1
 '''
 
 
