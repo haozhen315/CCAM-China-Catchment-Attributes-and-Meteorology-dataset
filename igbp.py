@@ -15,7 +15,7 @@ Requirement:
 processed_igbp.tif: Converted IGBP classification in Raster. Source data: https://lpdaac.usgs.gov/products/mcd12q1v006/. 
 However, MODIS data is divided into different tiles, which is inconvenient for processing. 
 We have merged the MODIS product into a single TIF which can be downloaded here: 
-https://1drv.ms/u/s!AqzR0fLyn9KKspF4xxbe0xM7qJNzkA?e=TYyZeC. Download the processed MODIS data.
+https://zenodo.org/record/5137288/files/9_code_data.zip?download=1
 
 The directory should be structured as follows:
 ├── igbp.py
