@@ -53,6 +53,8 @@ Steps to generate the desired basin attributes:
 1. Prepare the required source data, put them in the right place following the instruction in each script; for data from SoilGrids250m, the TIF file might be large, and you may need to downscale large TIF files if you use GDAL=2.2.2;
 2. Run the code.
 
+The [9_code_data.zip](https://zenodo.org/record/5137288/files/9_code_data.zip?download=1) included in the Zenodo repository contains processed_glim.py, processed_igbp.tif, processed_permeability.tif and processed_porosity.tif
+
 When all the data is ready, the ./data folder will look like this:
 ```bash
 ├── dems
