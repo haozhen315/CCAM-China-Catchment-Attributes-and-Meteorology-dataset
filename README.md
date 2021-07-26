@@ -73,11 +73,11 @@ When all the data is ready, the ./data folder will look like this:
 |   ├── as_streams_wgs.shp
 |   ├── ...
 ├── soil_source_data
-|   ├── binary # http://globalchange.bnu.edu.cn/research/soil5.jsp
+|   ├── binary
 |   |   ├── log_k_s_l1
 |   |   ├── log_k_s_l2
 |   |   ├── ...
-|   ├── netcdf # http://globalchange.bnu.edu.cn/research/soil2
+|   ├── netcdf 
 |   |   ├── CL.nc
 |   |   ├── GRAV.nc
 |   |   ├── PDEP.nc
@@ -86,7 +86,7 @@ When all the data is ready, the ./data folder will look like this:
 |   |   ├── SOM.nc
 |   |   ├── POR.nc
 |   |   ├── ...
-|   ├── tif # https://files.isric.org/soilgrids/former/2017-03-10/data/
+|   ├── tif 
 |   |   ├── *.tif
 ├── SURF_CLI_CHN_MUL_DAY
 |   ├── Data
