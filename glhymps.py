@@ -3,6 +3,11 @@ import pandas as pd
 from tqdm import tqdm
 from utils import *
 
+'''
+Supporting data: 
+https://zenodo.org/record/5137288/files/9_code_data.zip?download=1
+'''
+
 
 class GLHYMPS():
 
