@@ -1,0 +1,18 @@
+land,50,99
+Evergreen needleleaf tree,0.18,1.8
+Evergreen broadleaf tree,0.21,3.01
+Deciduous needleleaf tree,0.18,2.01
+Deciduous broadleaf tree,0.2,2.01
+Mixed forest,0.25,2.4
+Closed shrubland,0.21,2.5
+Open shrubland,0.2,3.1
+Woody savanna,0.16,1.71
+Savanna,0.18,2.41
+Grassland,0.13,1.5
+Permanent wetland,0,0
+Cropland,0.18,1.51
+Urban and built-up land,0.18,1.51
+Cropland/natural vegetaion,0.18,1.51
+Snow and ice,0,0
+Barren,0.31,4.01
+Water bodies,0,0
