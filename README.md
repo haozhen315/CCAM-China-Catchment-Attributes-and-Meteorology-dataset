@@ -136,6 +136,4 @@ In addition, this project supports generating catchment scale meteorological tim
 
 
 ## Citation
-If you use our code or method in your work, please cite the following:
-
 Hao, Z., Jin, J., Xia, R., Tian, S., Yang, W., Liu, Q., Zhu, M., Ma, T., Jing, C., and Zhang, Y.: CCAM: China Catchment Attributes and Meteorology dataset, Earth Syst. Sci. Data, 13, 5591–5616, https://doi.org/10.5194/essd-13-5591-2021, 2021.
