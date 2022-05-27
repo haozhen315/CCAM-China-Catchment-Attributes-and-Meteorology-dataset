@@ -98,7 +98,6 @@ def geotif_from_array(array: np.array, lat_start: float, lat_end: float, lon_sta
                       degree: float, output_file: str):
     """
     Write a numpy.array to a GeoTIFF file with location information, using the WGS84 (EPSG: 4326) coordinate system by default
-
     array: data to be written to GeoTIFF
     lat_start: minimum latitude
     lat_end: maximum latitude
@@ -110,12 +109,11 @@ def geotif_from_array(array: np.array, lat_start: float, lat_end: float, lon_sta
     mag_grid = np.float64(array)
     num_v = mag_grid.shape[0]
     num_h = mag_grid.shape[1]
+    print(num_h, num_v)
     lats = np.linspace(lat_start, lat_end, num_v)
     lons = np.linspace(lon_start, lon_end, num_h)
     assert len(lats) == mag_grid.shape[0]
     assert len(lons) == mag_grid.shape[1]
-    xres = lons[1] - lons[0]
-    yres = lats[1] - lats[0]
     ysize = len(lats)
     xsize = len(lons)
     driver = gdal.GetDriverByName('GTiff')
@@ -123,7 +121,7 @@ def geotif_from_array(array: np.array, lat_start: float, lat_end: float, lon_sta
     srs = osr.SpatialReference()
     srs.ImportFromEPSG(4326)
     ds.SetProjection(srs.ExportToWkt())
-    gt = [lon_start, xres, 0, lat_start, 0, yres]
+    gt = [lon_start, degree, 0, lat_start + degree * num_h, 0, -degree]
     ds.SetGeoTransform(gt)
     outband = ds.GetRasterBand(1)
     outband.SetStatistics(np.min(mag_grid), np.max(mag_grid), np.average(mag_grid), np.std(mag_grid))
