@@ -14,7 +14,7 @@ This repository supports generating 120+ basin attributes for each basin given a
 CCAM: All catchment data (catchment static attributes, meteorological time series) are calculated based on the information within the corresponding catchment boundary, even if there is an upper catchment.
 HydroMLYR: All catchmens are divided up to the source of the river such that there is no upper catchment.
 
-CCAM数据集：所有流域数据（流域静态属性、气象时间序列）都基于流域边界内信息计算，即使流域处于干流。
+CCAM数据集：所有流域数据（流域静态属性、气象时间序列）都基于（GDBD）流域边界内信息计算，即使流域处于干流。
 HydroMLYR数据集：所有流域边界都划分到河流源头, 不存在上级流域。
 
 ## Find the data you need 如何找到所需数据
