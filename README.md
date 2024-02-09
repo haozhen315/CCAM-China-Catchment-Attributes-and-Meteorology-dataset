@@ -10,14 +10,11 @@ The manuscript can be found [here](https://doi.org/10.5194/essd-13-5591-2021) (p
 
 This repository supports generating 120+ basin attributes for each basin given a single or several basin boundaries. Except for the netCDF and Meteorological time series data, which only covers China, other data sources are global, which means that the code can also be used to calculate these attributes of watersheds in other regions.
 
-## Description of the data set 关于数据集的说明
+## Description of the data set
 CCAM: All catchment data (catchment static attributes, meteorological time series) are calculated based on the information within the corresponding catchment boundary, even if there is an upper catchment.
 HydroMLYR: All catchmens are divided up to the source of the river such that there is no upper catchment.
 
-CCAM数据集：所有流域数据（流域静态属性、气象时间序列）都基于（GDBD）流域边界内信息计算，即使流域处于干流。
-HydroMLYR数据集：所有流域边界都划分到河流源头, 不存在上级流域。
-
-## Find the data you need 如何找到所需数据
+## Find the data you need
 The data provided by the [dataset](https://zenodo.org/record/5092162#.YPVcpuhLhPY) includes all river basins in China. Use the following code to find the nearest river basin id according to the given coordinates:
 ```python
 >>> import pandas as pd
@@ -29,9 +26,6 @@ The data provided by the [dataset](https://zenodo.org/record/5092162#.YPVcpuhLhP
 ```
 
 In addition to the above method, one can download [GDBD] (https://www.cger.nies.go.jp/db/gdbd/gdbd_index_e.html) Asia data. Open the mdb file in a GIS software, then the GDBD_ID of basins of interest can be found easily.
-
-除了上述方法，可以下载[GDBD](https://www.cger.nies.go.jp/db/gdbd/gdbd_index_e.html)亚洲流域数据，在GIS软件中打开下载的mdb文件后可以找到感兴趣位置流域的GDBD_ID.
-
 
 ## Update
 (20210906) SURF_CLI_CHN_MUL_DAY has just been closed for sharing. If you have SURF_CLI_CHN_MUL_DAY data downloaded or SURF_CLI_CHN_MUL_DAY may be made public again in the future, the code meteo_time_series_surf.py for calculating the watershed climate time series can still be used. If not, the meteorological time series from 1990 to 2020 for any given basin can still be calculated based on our [released data](https://zenodo.org/record/5137288) using meteo_time_series_ccam.py. The principle is to calculate the overlapping areas of the given watershed and the watersheds we have prepared, and then calculate the meteorological time series of the given watershed by weighting. 
